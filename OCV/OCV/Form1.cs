@@ -69,15 +69,53 @@ namespace OCV
             }
 
             imageBox1.Image = capture.QuerySmallFrame();
-            if (Gray_filter_checkBox.Checked)
-            { 
+
+            Image<Bgr, Byte> imgProcessed = capture.QueryFrame().ToImage<Bgr, Byte>();
+            if (checkedListBox1.GetItemChecked(0))
+            {
                 Image<Gray, Byte> imgProcessed1;
-                Image<Bgr, Byte> imgProcessed = capture.QueryFrame().ToImage<Bgr, Byte>();
-                imgProcessed1 = imgProcessed.Convert<Gray, byte>();
-                Image<Gray, Single> img_final = (imgProcessed1.Sobel(1, 0, 5));
-                imageBox1.Image = img_final;
+                imgProcessed1 = imgProcessed.Convert<Gray, byte>(); 
+                imageBox1.Image =  (imgProcessed1.Sobel(1, 0, 5));
             }
-                
+            if (checkedListBox1.GetItemChecked(1))
+            {
+                Image<Bgr, byte> mediansmooth = imgProcessed.SmoothMedian(15);
+                imageBox1.Image = mediansmooth;
+            }
+            if (checkedListBox1.GetItemChecked(2))
+            { 
+                Image<Bgr, byte> blur = imgProcessed.SmoothBlur(10, 10, true);
+                imageBox1.Image = blur;
+            }
+            if (checkedListBox1.GetItemChecked(3))
+            {
+                Image<Bgr, byte> not_img = imgProcessed.Not();
+                imageBox1.Image = not_img;
+            }
+            if (checkedListBox1.GetItemChecked(4))
+            { 
+                Image<Bgr, float> bilat = imgProcessed.Laplace(15);
+                imageBox1.Image = bilat ;
+            } 
+            if (checkedListBox1.GetItemChecked(5))
+            {
+                Image<Bgr, float> Sobel = imgProcessed.Sobel(1, 0, 3);
+                imageBox1.Image = Sobel;
+            }
+            if (checkedListBox1.GetItemChecked(6))
+            {
+                Image<Bgr, byte> ThresholdBinary = imgProcessed.ThresholdBinary(new Bgr(100, 100,100), new Bgr(200, 200, 200));
+                imageBox1.Image = ThresholdBinary;
+            }
+
+            if (checkedListBox1.GetItemChecked(7))
+            {
+                Image<Bgr, byte> ThresholdTrunc = imgProcessed.ThresholdTrunc(new Bgr(125, 125, 100));
+                imageBox1.Image = ThresholdTrunc;
+            }
+
+
+
 
 
         }

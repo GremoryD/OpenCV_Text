@@ -34,11 +34,11 @@
             this.imageBox2 = new Emgu.CV.UI.ImageBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.Gray_filter_checkBox = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -100,18 +100,8 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(576, 335);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Filters";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // Gray_filter_checkBox
-            // 
-            this.Gray_filter_checkBox.AutoSize = true;
-            this.Gray_filter_checkBox.Location = new System.Drawing.Point(6, 19);
-            this.Gray_filter_checkBox.Name = "Gray_filter_checkBox";
-            this.Gray_filter_checkBox.Size = new System.Drawing.Size(70, 17);
-            this.Gray_filter_checkBox.TabIndex = 3;
-            this.Gray_filter_checkBox.Text = "Gray filter";
-            this.Gray_filter_checkBox.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -121,7 +111,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(576, 335);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Haarcascade";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // splitContainer1
@@ -158,14 +148,31 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.Gray_filter_checkBox);
+            this.groupBox1.Controls.Add(this.checkedListBox1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(166, 329);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Filters";
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Items.AddRange(new object[] {
+            "Gray filter",
+            "Mediansmooth",
+            "Blur",
+            "Not",
+            "Laplace",
+            "Sobel",
+            "Threshold Binary",
+            "ThresholdTrunc"});
+            this.checkedListBox1.Location = new System.Drawing.Point(6, 19);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(154, 229);
+            this.checkedListBox1.TabIndex = 4;
             // 
             // Form1
             // 
@@ -174,7 +181,7 @@
             this.ClientSize = new System.Drawing.Size(584, 361);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "OCV";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.imageBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox2)).EndInit();
@@ -189,7 +196,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -201,11 +207,11 @@
         private Emgu.CV.UI.ImageBox imageBox2;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.CheckBox Gray_filter_checkBox;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
     }
 }
 
