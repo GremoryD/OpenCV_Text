@@ -45,10 +45,13 @@ namespace OCV
         }
 
         private CascadeClassifier _cascadeClassifier;
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             string[] files = { "\\face.xml", "\\haarcascade_frontalface_alt.xml" , "\\haarcascade_eye.xml",
                              "\\haarcascade_frontalface_alt2.xml" , "\\haarcascade_frontalface_default.xml" , "\\smile.xml","\\cas1.xml"};
+
+
         _cascadeClassifier = new CascadeClassifier(Application.StartupPath + "\\haarcascade" + files[4]);
         using (var imageFrame = capture.QuerySmallFrame().ToImage<Bgr, Byte>())
                 {
@@ -64,12 +67,19 @@ namespace OCV
                     }
                 imageBox2.Image = imageFrame;
             }
-            Image<Gray, Byte> imgProcessed1;
-            Image<Bgr, Byte> imgProcessed = capture.QueryFrame().ToImage<Bgr, Byte>();
-            imgProcessed1 = imgProcessed.Convert<Gray, byte>();
-            Image<Gray, Single> img_final = (imgProcessed1.Sobel(1, 0, 5));
-            imageBox1.Image = img_final;
-           // imageBox1.Image = capture.QuerySmallFrame();
+
+            imageBox1.Image = capture.QuerySmallFrame();
+            if (Gray_filter_checkBox.Checked)
+            { 
+                Image<Gray, Byte> imgProcessed1;
+                Image<Bgr, Byte> imgProcessed = capture.QueryFrame().ToImage<Bgr, Byte>();
+                imgProcessed1 = imgProcessed.Convert<Gray, byte>();
+                Image<Gray, Single> img_final = (imgProcessed1.Sobel(1, 0, 5));
+                imageBox1.Image = img_final;
+            }
+                
+
+
         }
     }
 }
